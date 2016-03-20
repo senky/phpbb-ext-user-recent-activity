@@ -1,0 +1,28 @@
+{
+	"name": "senky/userrecentactivity",
+	"type": "phpbb-extension",
+	"description": "Displays a users recent posting activity in the users profile. Displays posts text with bbcode striped and truncated to a length set in the ACP.",
+	"version": "1.0.0",
+	"time": "2016-03-20",
+	"license": "GPL-2.0",
+	"authors": [{
+			"name": "Jakub Senko",
+			"email": "jakubsenko@gmail.com",
+			"role": "Lead Developer"
+		},
+		{
+			"name": "Ian Taylor",
+			"email": "iantaylor603@gmail.com",
+			"homepage": "http://ian-taylor.ca",
+			"role": "Past Developer (MOD author)"
+		}],
+	"require": {
+		"php": ">=5.3.3"
+	},
+	"extra": {
+		"display-name": "User Recent Activity",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.1.0"
+		}
+	}
+}

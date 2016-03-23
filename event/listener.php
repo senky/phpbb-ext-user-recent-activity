@@ -95,10 +95,10 @@ class listener implements EventSubscriberInterface
 				'ORDER_BY'	=> 'p.post_id DESC'
 			));
 			$result = $this->db->sql_query_limit($sql, $this->config['number_user_recent_activity']);
-			while($row = $this->db->sql_fetchrow($result))
+			while ($row = $this->db->sql_fetchrow($result))
 			{
 				// Does user have permission to read forum topic is in?
-				if($this->auth->acl_get('f_read', $row['forum_id']))
+				if ($this->auth->acl_get('f_read', $row['forum_id']))
 				{
 					$post_id = $row['post_id'];
 
@@ -114,8 +114,8 @@ class listener implements EventSubscriberInterface
 						$text = str_replace('<br />', ' ', $text);
 						strip_bbcode($text, $row['bbcode_uid']); // btw, why this function modifies parameter???
 					}
-					
-					$this->template->assign_block_vars('post', array(	
+
+					$this->template->assign_block_vars('post', array(
 						'SUBJECT'	=> $row['post_subject'],
 						'TIME'		=> $this->user->format_date($row['post_time']),
 						'POST_TEXT'	=> empty($text) ? false : truncate_string($text, intval($this->config['number_char_post'])),

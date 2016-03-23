@@ -2,6 +2,8 @@
 
 This is the repository for the development of the phpBB User Recent Activity Extension
 
+[![Build Status](https://travis-ci.org/Senky/phpbb-ext-user-recent-activity.svg?branch=develop)](https://travis-ci.org/Senky/phpbb-ext-user-recent-activity)
+
 ## Install
 
 1. [Download the latest validated release](https://www.phpbb.com/customise/db/extension/user_recent_activity/).

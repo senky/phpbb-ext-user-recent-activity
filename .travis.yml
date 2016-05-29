@@ -28,7 +28,7 @@ matrix:
 
 env:
   global:
-    - EXTNAME="senky/ajaxbase"
+    - EXTNAME="senky/userrecentactivity"
     - SNIFF="1"
     - IMAGE_ICC="1"
     - EPV="1"

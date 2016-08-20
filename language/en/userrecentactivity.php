@@ -19,6 +19,6 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'USER_RECENT_ACTIVITY'	=> '%s\'s recent activity',
+	'USER_RECENT_ACTIVITY'	=> '%s’s recent activity',
 	'DATE'					=> 'Date',
 ));

@@ -95,7 +95,7 @@ class listener implements EventSubscriberInterface
 				'LEFT_JOIN'	=> array(
 					array(
 						'FROM'	=> array(TOPICS_TABLE => 't'),
-						'ON'	=> 'p.poster_id =' . $event['member']['user_id'],
+						'ON'	=> 'p.poster_id =' . (int) $event['member']['user_id'],
 					)
 				),
 				'WHERE'		=> 'p.topic_id = t.topic_id',

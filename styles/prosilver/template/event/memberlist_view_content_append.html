@@ -12,20 +12,23 @@
 				</li>
 			</ul>
 			<!-- BEGIN post -->
-				<ul class="topiclist topics">
+				<ul class="topiclist">
 					<li class="row<!-- IF post.S_ROW_COUNT is even --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
 						<dl>
 							<dt>
 								<div class="list-inner">
-									<a class="topictitle" href="{post.U_POSTS}">{post.SUBJECT}</a><br />
+									<a class="topictitle" href="{post.U_POSTS}">{post.SUBJECT}</a>
 									<!-- IF post.POST_TEXT -->
+										<br>
 										<em>{post.POST_TEXT}…</em>
 									<!-- ENDIF -->
 								</div>
-							</dt> 
-							<dd class="posts"> <dfn>{L_REPLIES}</dfn>{post.REPLIES}</dd>
-							<dd class="views"><dfn>{L_VIEWS}</dfn>{post.VIEWS}</dd>
-							<dd class="lastpost"><span><dfn>{L_LAST_POST} </dfn>{post.TIME}&nbsp;<a href="{post.U_POSTS}">{LAST_POST_IMG}</a></dd>
+							</dt>
+							<dd class="posts">{post.REPLIES} <dfn>{L_REPLIES}</dfn></dd>
+							<dd class="views">{post.VIEWS} <dfn>{L_VIEWS}</dfn></dd>
+							<dd class="lastpost"><span><dfn>{L_LAST_POST}</dfn>
+								{post.TIME} <a href="{post.U_POSTS}">{LAST_POST_IMG}</a></span>
+							</dd>
 						</dl>
 					</li>
 				</ul>

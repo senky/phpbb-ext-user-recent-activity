@@ -30,9 +30,9 @@ class main_module
 				trigger_error('FORM_INVALID');
 			}
 
-			$config->set('allow_user_recent_activity', $request->variable('allow_user_recent_activity', 0));
+			$config->set('allow_user_recent_activity', $request->variable('allow_user_recent_activity', false));
 			$config->set('number_user_recent_activity', $request->variable('number_user_recent_activity', 0));
-			$config->set('show_user_recent_post', $request->variable('show_user_recent_post', 0));
+			$config->set('show_user_recent_post', $request->variable('show_user_recent_post', false));
 			$config->set('number_char_post', $request->variable('number_char_post', 0));
 
 			trigger_error($user->lang('ACP_USER_RECENT_ACTIVITY_SETTING_SAVED') . adm_back_link($this->u_action));

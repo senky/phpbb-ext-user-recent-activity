@@ -17,19 +17,19 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class listener implements EventSubscriberInterface
 {
-	/** @var \phpbb\template\template */
+	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
-	/** @var \phpbb\template\template */
+	/** @var \phpbb\config\config */
 	protected $config;
 
-	/** @var \phpbb\template\template */
+	/** @var \phpbb\auth\auth */
 	protected $auth;
 
 	/** @var \phpbb\template\template */
 	protected $template;
 
-	/** @var \phpbb\template\template */
+	/** @var \phpbb\user */
 	protected $user;
 
 	/** @var \phpbb\content_visibility */
@@ -44,7 +44,14 @@ class listener implements EventSubscriberInterface
 	/**
 	* Constructor
 	*
-	* @param \phpbb\template\template	$template			Template object
+	* @param \phpbb\db\driver\driver_interface	$db					Database object
+	* @param \phpbb\config\config				$config				Config object
+	* @param \phpbb\auth\auth					$auth				Auth object
+	* @param \phpbb\template\template			$template			Template object
+	* @param \phpbb\user						$user				User object
+	* @param \phpbb\content_visibility			$content_visibility	Content visibility object
+	* @param string								$root_path			phpBB root path
+	* @param string								$php_ext			phpBB php extension
 	* @access public
 	*/
 	public function __construct(\phpbb\db\driver\driver_interface $db, \phpbb\config\config $config, \phpbb\auth\auth $auth, \phpbb\template\template $template, \phpbb\user $user, \phpbb\content_visibility $content_visibility, $root_path, $php_ext)

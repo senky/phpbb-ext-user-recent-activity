@@ -122,6 +122,11 @@ class listener implements EventSubscriberInterface
 					// will be merged, worsening readability. Replace it with space instead.
 					$text = str_replace('<br />', ' ', $text);
 					strip_bbcode($text, $row['bbcode_uid']); // btw, why this function modifies parameter???
+
+					if (strlen($text) > intval($this->config['number_char_post']))
+					{
+						$text = truncate_string($text, intval($this->config['number_char_post'])) . '…';
+					}
 				}
 
 				$this->template->assign_block_vars('post', array(

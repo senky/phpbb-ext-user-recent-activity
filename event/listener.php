@@ -87,6 +87,8 @@ class listener implements EventSubscriberInterface
 			$this->user->add_lang_ext('senky/userrecentactivity', 'userrecentactivity');
 
 			// Select member posts ordered by time, newest first.
+			$exclude_forums = array_keys($this->auth->acl_getf('!f_read', true));
+
 			$sql = $this->db->sql_build_query('SELECT', array(
 				'SELECT'	=> 'p.post_subject, p.post_id, p.post_time, p.post_text, p.bbcode_uid, p.bbcode_bitfield, p.enable_smilies, p.enable_bbcode, p.enable_magic_url, t.topic_views, t.forum_id, t.topic_posts_approved, t.topic_posts_unapproved, t.topic_posts_softdeleted',
 				'FROM'		=> array(
@@ -98,39 +100,38 @@ class listener implements EventSubscriberInterface
 						'ON'	=> 'p.poster_id =' . (int) $event['member']['user_id'],
 					)
 				),
-				'WHERE'		=> 'p.topic_id = t.topic_id',
+				'WHERE'		=> 'p.topic_id = t.topic_id
+					AND ' . $this->db->sql_in_set('p.forum_id', $exclude_forums, true, true) . '
+					AND p.post_visibility = ' . ITEM_APPROVED . '
+					AND t.topic_visibility = ' . ITEM_APPROVED,
 				'ORDER_BY'	=> 'p.post_id DESC'
 			));
 			$result = $this->db->sql_query_limit($sql, $this->config['number_user_recent_activity']);
 			while ($row = $this->db->sql_fetchrow($result))
 			{
-				// Does user have permission to read forum topic is in?
-				if ($this->auth->acl_get('f_read', $row['forum_id']))
+				$post_id = $row['post_id'];
+
+				// Prepare post text, but only if needed
+				$text = '';
+				if ($this->config['show_user_recent_post'])
 				{
-					$post_id = $row['post_id'];
-
-					// Prepare post text, but only if needed
-					$text = '';
-					if ($this->config['show_user_recent_post'])
-					{
-						$bbcode_options = (($row['enable_bbcode']) ? OPTION_FLAG_BBCODE : 0) + (($row['enable_smilies']) ? OPTION_FLAG_SMILIES : 0) +  (($row['enable_magic_url']) ? OPTION_FLAG_LINKS : 0);
-						$text = generate_text_for_display($row['post_text'], $row['bbcode_uid'], $row['bbcode_bitfield'], $bbcode_options);
-						// strip_bbcode removes line breaks completely without any compensation.
-						// This means, that last word of previous line and first word of new line
-						// will be merged, worsening readability. Replace it with space instead.
-						$text = str_replace('<br />', ' ', $text);
-						strip_bbcode($text, $row['bbcode_uid']); // btw, why this function modifies parameter???
-					}
-
-					$this->template->assign_block_vars('post', array(
-						'SUBJECT'	=> $row['post_subject'],
-						'TIME'		=> $this->user->format_date($row['post_time']),
-						'POST_TEXT'	=> empty($text) ? false : truncate_string($text, intval($this->config['number_char_post'])),
-						'REPLIES'	=> $this->content_visibility->get_count('topic_posts', $row, $row['forum_id']) - 1,
-						'VIEWS'		=> $row['topic_views'],
-						'U_POSTS'	=> append_sid("{$this->root_path}viewtopic.{$this->php_ext}", "p=$post_id#p$post_id"),
-					));
+					$bbcode_options = (($row['enable_bbcode']) ? OPTION_FLAG_BBCODE : 0) + (($row['enable_smilies']) ? OPTION_FLAG_SMILIES : 0) +  (($row['enable_magic_url']) ? OPTION_FLAG_LINKS : 0);
+					$text = generate_text_for_display($row['post_text'], $row['bbcode_uid'], $row['bbcode_bitfield'], $bbcode_options);
+					// strip_bbcode removes line breaks completely without any compensation.
+					// This means, that last word of previous line and first word of new line
+					// will be merged, worsening readability. Replace it with space instead.
+					$text = str_replace('<br />', ' ', $text);
+					strip_bbcode($text, $row['bbcode_uid']); // btw, why this function modifies parameter???
 				}
+
+				$this->template->assign_block_vars('post', array(
+					'SUBJECT'	=> $row['post_subject'],
+					'TIME'		=> $this->user->format_date($row['post_time']),
+					'POST_TEXT'	=> empty($text) ? false : $text,
+					'REPLIES'	=> $this->content_visibility->get_count('topic_posts', $row, $row['forum_id']) - 1,
+					'VIEWS'		=> $row['topic_views'],
+					'U_POSTS'	=> append_sid("{$this->root_path}viewtopic.{$this->php_ext}", "p=$post_id#p$post_id"),
+				));
 			}
 			$this->db->sql_freeresult($result);
 

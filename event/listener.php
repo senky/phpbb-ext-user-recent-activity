@@ -142,7 +142,7 @@ class listener implements EventSubscriberInterface
 
 			$this->template->assign_vars(array(
 				'USER_RECENT_ACTIVITY'	=> $this->user->lang('USER_RECENT_ACTIVITY', $event['member']['username']),
-				'LAST_POST_IMG'			=> $this->user->img('icon_topic_latest', 'VIEW_LATEST_POST'),
+				'LAST_POST_IMG'			=> version_compare($this->config['version'], '3.2.0', '<') ? $this->user->img('icon_topic_latest', 'VIEW_LATEST_POST') : '',
 			));
 		}
 	}

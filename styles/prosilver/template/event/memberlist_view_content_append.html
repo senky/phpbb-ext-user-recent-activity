@@ -26,8 +26,15 @@
 							</dt>
 							<dd class="posts">{post.REPLIES} <dfn>{L_REPLIES}</dfn></dd>
 							<dd class="views">{post.VIEWS} <dfn>{L_VIEWS}</dfn></dd>
-							<dd class="lastpost"><span><dfn>{L_LAST_POST}</dfn>
-								{post.TIME} <a href="{post.U_POSTS}">{LAST_POST_IMG}</a></span>
+							<dd class="lastpost">
+								<span>
+									<dfn>{L_LAST_POST}</dfn>
+									{post.TIME}
+									<a href="{post.U_POSTS}">
+										{LAST_POST_IMG}
+										<i class="icon fa-external-link-square fa-fw icon-lightgray icon-md" aria-hidden="true"></i>
+									</a>
+								</span>
 							</dd>
 						</dl>
 					</li>

@@ -31,6 +31,7 @@ class main_module
 			}
 
 			$config->set('allow_user_recent_activity', $request->variable('allow_user_recent_activity', false));
+			$config->set('senky_ura_only_mods', $request->variable('senky_ura_only_mods', true));
 			$config->set('number_user_recent_activity', $request->variable('number_user_recent_activity', 0));
 			$config->set('show_user_recent_post', $request->variable('show_user_recent_post', false));
 			$config->set('number_char_post', $request->variable('number_char_post', 0));
@@ -41,6 +42,7 @@ class main_module
 		$template->assign_vars(array(
 			'U_ACTION'						=> $this->u_action,
 			'ALLOW_USER_RECENT_ACTIVITY'	=> $config['allow_user_recent_activity'],
+			'ONLY_MODS'						=> $config['senky_ura_only_mods'],
 			'NUMBER_USER_RECENT_ACTIVITY'	=> $config['number_user_recent_activity'],
 			'SHOW_USER_RECENT_ACTIVITY'		=> $config['show_user_recent_post'],
 			'NUMBER_CHAR_POST'				=> $config['number_char_post'],

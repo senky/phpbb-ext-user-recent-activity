@@ -29,6 +29,8 @@ $lang = array_merge($lang, array(
 
 	'ALLOW_USER_RECENT_ACTIVITY'			=> 'Permitir actividad reciente de usuario',
 	'ALLOW_USER_RECENT_ACTIVITY_EXPLAIN'	=> 'La actividad reciente se mostrará en los perfiles de usuario.',
+	'ONLY_MODS'								=> 'Display user recent activity only to administrators and moderators',
+	'ONLY_MODS_EXPLAIN'						=> 'If set to Yes, user recent activity in user profiles will be visible only to administrators and moderators.',
 	'NUMBER_USER_RECENT_ACTIVITY'			=> 'Número máximo de mensajes de actividad reciente de usuarios',
 	'NUMBER_USER_RECENT_ACTIVITY_EXPLAIN'	=> 'El número máximo de mensajes en la actividad reciente del usuario que se mostrará en el perfil del usuario.',
 	'SHOW_USER_RECENT_POST'					=> 'Mostrar el texto del mensaje',

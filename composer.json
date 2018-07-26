@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "Displays a users recent posting activity in the users profile. Displays posts text with bbcode striped and truncated to a length set in the ACP.",
 	"version": "2.0.0",
-	"license": "GPL-2.0",
+	"license": "GPL-2.0-only",
 	"authors": [
 		{
 			"name": "Jakub Senko",

@@ -30,6 +30,8 @@ $lang = array_merge($lang, array(
 
 	'ALLOW_USER_RECENT_ACTIVITY'			=> 'Включить последние действия пользователя',
 	'ALLOW_USER_RECENT_ACTIVITY_EXPLAIN'	=> 'Последние действия будут отображаться в профилях пользователей.',
+	'ONLY_MODS'								=> 'Display user recent activity only to administrators and moderators',
+	'ONLY_MODS_EXPLAIN'						=> 'If set to Yes, user recent activity in user profiles will be visible only to administrators and moderators.',
 	'NUMBER_USER_RECENT_ACTIVITY'			=> 'Максимальное число отображаемых сообщений блока последние действия',
 	'NUMBER_USER_RECENT_ACTIVITY_EXPLAIN'	=> 'Максимальное число отображаемых сообщений блока последние действия в профиле пользователя.',
 	'SHOW_USER_RECENT_POST'					=> 'Показывать текст сообщения',

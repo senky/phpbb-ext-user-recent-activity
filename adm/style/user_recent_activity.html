@@ -18,6 +18,16 @@
 
 		<dl>
 			<dt>
+				<label for="senky_ura_only_mods">{L_ONLY_MODS}{L_COLON}</label><br /><span>{L_ONLY_MODS_EXPLAIN}</span>
+			</dt>
+			<dd>
+				<label><input type="radio" class="radio" name="senky_ura_only_mods" value="1"<!-- IF ONLY_MODS --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" id="senky_ura_only_mods" class="radio" name="senky_ura_only_mods" value="0"<!-- IF not ONLY_MODS --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt>
 				<label for="number_user_recent_activity">{L_NUMBER_USER_RECENT_ACTIVITY}{L_COLON}</label><br /><span>{L_NUMBER_USER_RECENT_ACTIVITY_EXPLAIN}</span>
 			</dt>
 			<dd>

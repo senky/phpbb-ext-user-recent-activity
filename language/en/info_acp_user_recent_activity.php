@@ -29,6 +29,8 @@ $lang = array_merge($lang, array(
 
 	'ALLOW_USER_RECENT_ACTIVITY'			=> 'Allow user recent activity',
 	'ALLOW_USER_RECENT_ACTIVITY_EXPLAIN'	=> 'Recent activity will display in user profiles.',
+	'ONLY_MODS'								=> 'Display user recent activity only to administrators and moderators',
+	'ONLY_MODS_EXPLAIN'						=> 'If set to Yes, user recent activity in user profiles will be visible only to administrators and moderators.',
 	'NUMBER_USER_RECENT_ACTIVITY'			=> 'Max number of user recent activity posts',
 	'NUMBER_USER_RECENT_ACTIVITY_EXPLAIN'	=> 'Maximum number of user recent activity posts to display in the users profile.',
 	'SHOW_USER_RECENT_POST'					=> 'Show the post text',

@@ -2,7 +2,7 @@
 	"name": "senky/userrecentactivity",
 	"type": "phpbb-extension",
 	"description": "Displays a users recent posting activity in the users profile. Displays posts text with bbcode striped and truncated to a length set in the ACP.",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"license": "GPL-2.0-only",
 	"authors": [
 		{

@@ -10,7 +10,7 @@
 
 namespace senky\userrecentactivity\migrations;
 
-class release_1_0_0 extends \phpbb\db\migration\migration
+class release_2_1_0 extends \phpbb\db\migration\migration
 {
 	static public function depends_on()
 	{
